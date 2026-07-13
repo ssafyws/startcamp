@@ -1038,12 +1038,19 @@ showAnswerButton.addEventListener(
                 closeCustomModal
             );
 
-            /* 입력창에서 Enter를 누르면 정답 확인 */
             answerInput.addEventListener("keydown", (event) => {
-                if (event.key === "Enter") {
-                    checkPokemonAnswer();
-                }
-            });
+
+    if (event.key !== "Enter") return;
+
+    // 이미 맞춘 문제라면 다음 문제
+    if (isCurrentQuestionSolved) {
+        goToNextQuiz();
+    } else {
+        // 아직 안 맞췄으면 정답 확인
+        checkPokemonAnswer();
+    }
+
+});
 
             /* 모달 바깥 영역을 누르면 닫기 */
             modal.addEventListener("click", (event) => {

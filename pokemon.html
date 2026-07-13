@@ -719,7 +719,8 @@ categoryElement.textContent =
     scoreElement.textContent = score;
 
     answerInput.disabled = false;
-    answerInput.focus();
+answerInput.readOnly = false;
+answerInput.focus();
 }
 
         /**
@@ -795,7 +796,7 @@ categoryElement.textContent =
                 🎉 정답! 현재 점수: ${score}점
             </span>`;
 
-        answerInput.disabled = true;
+        answerInput.readOnly = true;
 
         showCustomModal(
             "🎉",
@@ -878,7 +879,7 @@ function showPokemonAnswer() {
         </span>`;
 
     answerInput.value = currentPokemon.name;
-    answerInput.disabled = true;
+    answerInput.readOnly = true;
 
     showCustomModal(
         "🔍",
@@ -976,14 +977,15 @@ function finishQuiz() {
          * 결과 모달을 닫습니다.
          */
         function closeCustomModal() {
-            const modal = document.getElementById("custom-modal");
+    const modal = document.getElementById("custom-modal");
+    const answerInput = document.getElementById("quiz-answer-input");
 
-            modal.classList.add("hidden");
+    modal.classList.add("hidden");
 
-            document
-                .getElementById("quiz-answer-input")
-                .focus();
-        }
+    if (answerInput) {
+        answerInput.focus();
+    }
+}
 
         document.addEventListener("DOMContentLoaded", () => {
             lucide.createIcons();
@@ -1039,17 +1041,19 @@ showAnswerButton.addEventListener(
             );
 
             answerInput.addEventListener("keydown", (event) => {
-
     if (event.key !== "Enter") return;
 
-    // 이미 맞춘 문제라면 다음 문제
-    if (isCurrentQuestionSolved) {
-        goToNextQuiz();
-    } else {
-        // 아직 안 맞췄으면 정답 확인
+    event.preventDefault();
+
+    /*
+    첫 번째 Enter 이벤트가 document까지 전달되어
+    곧바로 다음 문제로 넘어가는 것을 막는다.
+    */
+    event.stopPropagation();
+
+    if (!isCurrentQuestionSolved) {
         checkPokemonAnswer();
     }
-
 });
 
             /* 모달 바깥 영역을 누르면 닫기 */
@@ -1058,6 +1062,35 @@ showAnswerButton.addEventListener(
                     closeCustomModal();
                 }
             });
+            document.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+
+    const modalIsOpen =
+        !modal.classList.contains("hidden");
+
+    /*
+    정답이나 정답 공개 모달이 열린 상태에서
+    두 번째 Enter를 누르면 다음 문제로 이동한다.
+    */
+    if (modalIsOpen && isCurrentQuestionSolved) {
+        event.preventDefault();
+
+        closeCustomModal();
+        goToNextQuiz();
+
+        return;
+    }
+
+    /*
+    오답, 빈칸 안내 등 문제를 해결하지 못한 상태의 모달은
+    Enter를 누르면 모달만 닫는다.
+    */
+    if (modalIsOpen) {
+        event.preventDefault();
+
+        closeCustomModal();
+    }
+});
 
             /* Esc를 누르면 모달 닫기 */
             document.addEventListener("keydown", (event) => {

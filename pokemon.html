@@ -352,6 +352,12 @@
                             >
                         </div>
 
+                        <div
+    id="quiz-category"
+    class="pixel-font text-[9px] bg-emerald-100 border-2 border-black px-3 py-1"
+>
+    카테고리
+</div>
                         <p class="pixel-font text-[10px]">
                             이 포켓몬의 이름은?
                         </p>
@@ -461,57 +467,146 @@
     <script src="common.js"></script>
     <script>
         const quizList = [
-    { name: "이상해씨", id: 1 },
-    { name: "파이리", id: 4 },
-    { name: "꼬부기", id: 7 },
+    // ================= 스타팅 포켓몬 =================
+    { name: "이상해씨", id: 1, category: "스타팅" },
+    { name: "파이리", id: 4, category: "스타팅" },
+    { name: "꼬부기", id: 7, category: "스타팅" },
 
-    { name: "치코리타", id: 152 },
-    { name: "브케인", id: 155 },
-    { name: "리아코", id: 158 },
+    { name: "치코리타", id: 152, category: "스타팅" },
+    { name: "브케인", id: 155, category: "스타팅" },
+    { name: "리아코", id: 158, category: "스타팅" },
 
-    { name: "나무지기", id: 252 },
-    { name: "아차모", id: 255 },
-    { name: "물짱이", id: 258 },
+    { name: "나무지기", id: 252, category: "스타팅" },
+    { name: "아차모", id: 255, category: "스타팅" },
+    { name: "물짱이", id: 258, category: "스타팅" },
 
-    { name: "모부기", id: 387 },
-    { name: "불꽃숭이", id: 390 },
-    { name: "팽도리", id: 393 },
+    { name: "모부기", id: 387, category: "스타팅" },
+    { name: "불꽃숭이", id: 390, category: "스타팅" },
+    { name: "팽도리", id: 393, category: "스타팅" },
 
-    { name: "주리비얀", id: 495 },
-    { name: "뚜꾸리", id: 498 },
-    { name: "수댕이", id: 501 },
+    { name: "주리비얀", id: 495, category: "스타팅" },
+    { name: "뚜꾸리", id: 498, category: "스타팅" },
+    { name: "수댕이", id: 501, category: "스타팅" },
 
-    { name: "도치마론", id: 650 },
-    { name: "푸호꼬", id: 653 },
-    { name: "개구마르", id: 656 },
+    { name: "도치마론", id: 650, category: "스타팅" },
+    { name: "푸호꼬", id: 653, category: "스타팅" },
+    { name: "개구마르", id: 656, category: "스타팅" },
 
-    { name: "나몰빼미", id: 722 },
-    { name: "냐오불", id: 725 },
-    { name: "누리공", id: 728 },
+    { name: "나몰빼미", id: 722, category: "스타팅" },
+    { name: "냐오불", id: 725, category: "스타팅" },
+    { name: "누리공", id: 728, category: "스타팅" },
 
-    { name: "흥나숭", id: 810 },
-    { name: "염버니", id: 813 },
-    { name: "울머기", id: 816 },
+    { name: "흥나숭", id: 810, category: "스타팅" },
+    { name: "염버니", id: 813, category: "스타팅" },
+    { name: "울머기", id: 816, category: "스타팅" },
 
-    { name: "나오하", id: 906 },
-    { name: "뜨아거", id: 909 },
-    { name: "꾸왁스", id: 912 }
+    { name: "나오하", id: 906, category: "스타팅" },
+    { name: "뜨아거", id: 909, category: "스타팅" },
+    { name: "꾸왁스", id: 912, category: "스타팅" },
+
+    // ================= 인기 포켓몬 =================
+    { name: "피카츄", id: 25, category: "인기" },
+    { name: "라이츄", id: 26, category: "인기" },
+    { name: "이브이", id: 133, category: "인기" },
+    { name: "리자몽", id: 6, category: "인기" },
+    { name: "잠만보", id: 143, category: "인기" },
+    { name: "팬텀", id: 94, category: "인기" },
+    { name: "메타몽", id: 132, category: "인기" },
+    { name: "루카리오", id: 448, category: "인기" },
+    { name: "한카리아스", id: 445, category: "인기" },
+    { name: "개굴닌자", id: 658, category: "인기" },
+    { name: "따라큐", id: 778, category: "인기" },
+    { name: "님피아", id: 700, category: "인기" },
+    { name: "에이스번", id: 815, category: "인기" },
+    { name: "마스카나", id: 908, category: "인기" },
+
+    // ================= 초전설 포켓몬 =================
+    { name: "뮤츠", id: 150, category: "초전설" },
+    { name: "루기아", id: 249, category: "초전설" },
+    { name: "칠색조", id: 250, category: "초전설" },
+    { name: "가이오가", id: 382, category: "초전설" },
+    { name: "그란돈", id: 383, category: "초전설" },
+    { name: "레쿠쟈", id: 384, category: "초전설" },
+    { name: "디아루가", id: 483, category: "초전설" },
+    { name: "펄기아", id: 484, category: "초전설" },
+    { name: "기라티나", id: 487, category: "초전설" },
+    { name: "레시라무", id: 643, category: "초전설" },
+    { name: "제크로무", id: 644, category: "초전설" },
+    { name: "큐레무", id: 646, category: "초전설" },
+    { name: "제르네아스", id: 716, category: "초전설" },
+    { name: "이벨타르", id: 717, category: "초전설" },
+    { name: "솔가레오", id: 791, category: "초전설" },
+    { name: "루나아라", id: 792, category: "초전설" },
+    { name: "자시안", id: 888, category: "초전설" },
+    { name: "자마젠타", id: 889, category: "초전설" },
+    { name: "코라이돈", id: 1007, category: "초전설" },
+    { name: "미라이돈", id: 1008, category: "초전설" },
+
+    // ================= 준전설 포켓몬 =================
+    { name: "프리져", id: 144, category: "준전설" },
+    { name: "썬더", id: 145, category: "준전설" },
+    { name: "파이어", id: 146, category: "준전설" },
+
+    { name: "라이코", id: 243, category: "준전설" },
+    { name: "앤테이", id: 244, category: "준전설" },
+    { name: "스이쿤", id: 245, category: "준전설" },
+
+    { name: "레지락", id: 377, category: "준전설" },
+    { name: "레지아이스", id: 378, category: "준전설" },
+    { name: "레지스틸", id: 379, category: "준전설" },
+
+    { name: "라티아스", id: 380, category: "준전설" },
+    { name: "라티오스", id: 381, category: "준전설" },
+
+    { name: "유크시", id: 480, category: "준전설" },
+    { name: "엠라이트", id: 481, category: "준전설" },
+    { name: "아그놈", id: 482, category: "준전설" },
+
+    { name: "코바르온", id: 638, category: "준전설" },
+    { name: "테라키온", id: 639, category: "준전설" },
+    { name: "비리디온", id: 640, category: "준전설" },
+
+    { name: "카푸꼬꼬꼭", id: 785, category: "준전설" },
+    { name: "카푸나비나", id: 786, category: "준전설" },
+    { name: "카푸브루루", id: 787, category: "준전설" },
+    { name: "카푸느지느", id: 788, category: "준전설" },
+
+    { name: "치엔파오", id: 1002, category: "준전설" },
+    { name: "딩루", id: 1003, category: "준전설" },
+    { name: "위유이", id: 1004, category: "준전설" },
+    { name: "총지엔", id: 1001, category: "준전설" },
+{ name: "파오젠", id: 1002, category: "준전설" },
+{ name: "딩루", id: 1003, category: "준전설" },
+{ name: "위유이", id: 1004, category: "준전설" },
+
+    // ================= 환상의 포켓몬 =================
+    { name: "뮤", id: 151, category: "환상" },
+    { name: "세레비", id: 251, category: "환상" },
+    { name: "지라치", id: 385, category: "환상" },
+    { name: "테오키스", id: 386, category: "환상" },
+    { name: "마나피", id: 490, category: "환상" },
+    { name: "다크라이", id: 491, category: "환상" },
+    { name: "쉐이미", id: 492, category: "환상" },
+    { name: "아르세우스", id: 493, category: "환상" },
+    { name: "비크티니", id: 494, category: "환상" },
+    { name: "케르디오", id: 647, category: "환상" },
+    { name: "메로엣타", id: 648, category: "환상" },
+    { name: "게노세크트", id: 649, category: "환상" },
+    { name: "디안시", id: 719, category: "환상" },
+    { name: "후파", id: 720, category: "환상" },
+    { name: "볼케니온", id: 721, category: "환상" },
+    { name: "마기아나", id: 801, category: "환상" },
+    { name: "마샤도", id: 802, category: "환상" },
+    { name: "제라오라", id: 807, category: "환상" },
+    { name: "자루도", id: 893, category: "환상" }
 ];
 
 let currentPokemon = null;
+let shuffledQuizList = [];
 let currentQuizIndex = 0;
 let score = 0;
 
-/*
-현재 문제에서 이미 정답을 맞혔는지 확인한다.
-같은 문제로 점수를 여러 번 얻는 것을 막는다.
-*/
 let isCurrentQuestionSolved = false;
-
-/*
-정답 보기 버튼을 눌렀는지 확인한다.
-정답을 본 뒤에는 점수를 받을 수 없다.
-*/
 let isAnswerRevealed = false;
         /**
          * 새로운 퀴즈를 불러옵니다.
@@ -524,21 +619,67 @@ let isAnswerRevealed = false;
     isCurrentQuestionSolved = false;
     isAnswerRevealed = false;
 
+    shuffleQuizList();
+
     document.getElementById("quiz-score").textContent = "0";
 
     loadQuiz();
+}
+function shuffleQuizList() {
+    shuffledQuizList = [...quizList];
+
+    for (let i = shuffledQuizList.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+
+        [
+            shuffledQuizList[i],
+            shuffledQuizList[randomIndex]
+        ] = [
+            shuffledQuizList[randomIndex],
+            shuffledQuizList[i]
+        ];
+    }
+}
+function showPokemonHint() {
+    if (!currentPokemon) {
+        return;
+    }
+
+    const hint = document.getElementById("quiz-hint");
+    const name = currentPokemon.name;
+
+    let hintText = "";
+
+    if (name.length === 2) {
+        hintText = `${name[0]}○`;
+    } else if (name.length === 3) {
+        hintText = `${name[0]}○${name[2]}`;
+    } else {
+        hintText =
+            name[0] +
+            "○".repeat(name.length - 2) +
+            name[name.length - 1];
+    }
+
+    hint.textContent =
+        `💡 ${currentPokemon.category} 포켓몬 / ${name.length}글자 / ${hintText}`;
 }
         function loadQuiz() {
     /*
     모든 문제를 풀었으면 최종 결과를 보여준다.
     */
-    if (currentQuizIndex >= quizList.length) {
-        finishQuiz();
-        return;
-    }
+    if (currentQuizIndex >= shuffledQuizList.length) {
+    finishQuiz();
+    return;
+}
 
-    currentPokemon = quizList[currentQuizIndex];
+    currentPokemon = shuffledQuizList[currentQuizIndex];
 
+    const categoryElement =
+    document.getElementById("quiz-category");
+
+categoryElement.textContent =
+    `분류: ${currentPokemon.category}`;
     const pokemonImage =
         document.getElementById("pokemonImage");
 
@@ -574,8 +715,7 @@ let isAnswerRevealed = false;
     isAnswerRevealed = false;
 
     progress.textContent =
-        `${currentQuizIndex + 1} / ${quizList.length}`;
-
+    `${currentQuizIndex + 1} / ${shuffledQuizList.length}`;
     scoreElement.textContent = score;
 
     answerInput.disabled = false;
@@ -922,7 +1062,8 @@ showAnswerButton.addEventListener(
                 }
             });
 
-            loadQuiz();
+            shuffleQuizList();
+loadQuiz();
         });
     </script>
 

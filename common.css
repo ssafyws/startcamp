@@ -122,3 +122,103 @@ body {
 .stadium-lights {
     background: radial-gradient(circle at top, rgba(255,255,255,0.2) 0%, transparent 60%);
 }
+
+/* ================= CUSTOM CURSOR ================= */
+
+/* 기본 마우스 커서 숨기기 */
+body {
+    cursor: none;
+}
+
+/* 커스텀 커서 공통 설정 */
+#custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 26px;
+    height: 26px;
+
+    border: 3px solid #111;
+    border-radius: 50%;
+
+    pointer-events: none;
+    z-index: 999999;
+
+    opacity: 0;
+
+    transform: translate(-50%, -50%);
+
+    transition:
+        width 0.15s ease,
+        height 0.15s ease,
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+
+/* 가운데 장식 */
+#custom-cursor::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 7px;
+    height: 7px;
+
+    background: white;
+    border: 2px solid #111;
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+/* 버튼이나 링크 위에 올라갔을 때 */
+#custom-cursor.cursor-hover {
+    width: 38px;
+    height: 38px;
+}
+
+/* 모바일에서는 기본 커서 사용 */
+@media (hover: none), (pointer: coarse) {
+    body {
+        cursor: auto;
+    }
+
+    #custom-cursor {
+        display: none;
+    }
+}
+/* 포켓몬: 몬스터볼 */
+.pokemon-page #custom-cursor {
+    background:
+        linear-gradient(
+            to bottom,
+            #ef4444 0%,
+            #ef4444 44%,
+            #111 44%,
+            #111 56%,
+            #fff 56%,
+            #fff 100%
+        );
+}
+
+/* 레고: 노란 블록 */
+.lego-page #custom-cursor {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    background: #facc15;
+    border: 3px solid #111;
+}
+
+/* 축구: 축구공 느낌 */
+.football-page #custom-cursor {
+    background: white;
+    border: 3px solid #111;
+}
+
+.football-page #custom-cursor::after {
+    background: #111;
+}

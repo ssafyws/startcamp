@@ -329,6 +329,17 @@
                     <h3 class="text-sm font-bold pixel-font text-center text-slate-900 mb-6">
                         👴 오박사의 스타팅 포켓몬 퀴즈!
                     </h3>
+                    <div class="flex flex-wrap justify-center gap-4 mb-6">
+    <div class="pixel-font text-[10px] bg-white border-4 border-black px-4 py-2">
+        문제:
+        <span id="quiz-progress">1 / 27</span>
+    </div>
+
+    <div class="pixel-font text-[10px] bg-yellow-300 border-4 border-black px-4 py-2">
+        점수:
+        <span id="quiz-score">0</span>
+    </div>
+</div>
 
                     <div class="flex flex-col items-center gap-6">
 
@@ -354,28 +365,56 @@
                         >
 
                         <div class="flex flex-wrap justify-center gap-3">
-                            <button
-                                id="check-answer-button"
-                                type="button"
-                                class="pixel-font bg-red-600 hover:bg-red-700 text-white border-4 border-black px-4 py-2 active:translate-y-1"
-                            >
-                                정답 확인
-                            </button>
+    <button
+        id="check-answer-button"
+        type="button"
+        class="pixel-font bg-red-600 hover:bg-red-700 text-white border-4 border-black px-4 py-2 active:translate-y-1"
+    >
+        정답 확인
+    </button>
+    <button
+    id="restart-quiz-button"
+    type="button"
+    class="pixel-font bg-purple-600 hover:bg-purple-700 text-white border-4 border-black px-4 py-2 active:translate-y-1"
+>
+    처음부터
+</button>
 
-                            <button
-                                id="next-quiz-button"
-                                type="button"
-                                class="pixel-font bg-green-600 hover:bg-green-700 text-white border-4 border-black px-4 py-2 active:translate-y-1"
-                            >
-                                다음 문제
-                            </button>
-                        </div>
+    <button
+        id="hint-button"
+        type="button"
+        class="pixel-font bg-blue-500 hover:bg-blue-600 text-white border-4 border-black px-4 py-2 active:translate-y-1"
+    >
+        힌트
+    </button>
+
+    <button
+        id="show-answer-button"
+        type="button"
+        class="pixel-font bg-yellow-400 hover:bg-yellow-500 text-black border-4 border-black px-4 py-2 active:translate-y-1"
+    >
+        정답 보기
+    </button>
+
+    <button
+        id="next-quiz-button"
+        type="button"
+        class="pixel-font bg-green-600 hover:bg-green-700 text-white border-4 border-black px-4 py-2 active:translate-y-1"
+    >
+        다음 문제
+    </button>
+</div>
 
                         <div
-                            id="quiz-feedback"
-                            class="pixel-font text-[10px] font-bold min-h-6"
-                            aria-live="polite"
-                        ></div>
+    id="quiz-hint"
+    class="pixel-font text-[10px] text-blue-800 font-bold min-h-6 text-center"
+></div>
+
+<div
+    id="quiz-feedback"
+    class="pixel-font text-[10px] font-bold min-h-6"
+    aria-live="polite"
+></div>
                     </div>
                 </div>
 
@@ -459,29 +498,64 @@
     { name: "꾸왁스", id: 912 }
 ];
 
-        let currentPokemon = null;
-        let previousPokemonIndex = -1;
+let currentPokemon = null;
+let currentQuizIndex = 0;
+let score = 0;
 
+/*
+현재 문제에서 이미 정답을 맞혔는지 확인한다.
+같은 문제로 점수를 여러 번 얻는 것을 막는다.
+*/
+let isCurrentQuestionSolved = false;
+
+/*
+정답 보기 버튼을 눌렀는지 확인한다.
+정답을 본 뒤에는 점수를 받을 수 없다.
+*/
+let isAnswerRevealed = false;
         /**
          * 새로운 퀴즈를 불러옵니다.
          * 연속으로 같은 포켓몬이 나오지 않도록 처리했습니다.
          */
+        function restartQuiz() {
+    currentQuizIndex = 0;
+    score = 0;
+    currentPokemon = null;
+    isCurrentQuestionSolved = false;
+    isAnswerRevealed = false;
+
+    document.getElementById("quiz-score").textContent = "0";
+
+    loadQuiz();
+}
         function loadQuiz() {
-    let randomIndex;
+    /*
+    모든 문제를 풀었으면 최종 결과를 보여준다.
+    */
+    if (currentQuizIndex >= quizList.length) {
+        finishQuiz();
+        return;
+    }
 
-    do {
-        randomIndex = Math.floor(Math.random() * quizList.length);
-    } while (
-        quizList.length > 1 &&
-        randomIndex === previousPokemonIndex
-    );
+    currentPokemon = quizList[currentQuizIndex];
 
-    previousPokemonIndex = randomIndex;
-    currentPokemon = quizList[randomIndex];
+    const pokemonImage =
+        document.getElementById("pokemonImage");
 
-    const pokemonImage = document.getElementById("pokemonImage");
-    const answerInput = document.getElementById("quiz-answer-input");
-    const feedback = document.getElementById("quiz-feedback");
+    const answerInput =
+        document.getElementById("quiz-answer-input");
+
+    const feedback =
+        document.getElementById("quiz-feedback");
+
+    const hint =
+        document.getElementById("quiz-hint");
+
+    const progress =
+        document.getElementById("quiz-progress");
+
+    const scoreElement =
+        document.getElementById("quiz-score");
 
     pokemonImage.src =
         `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentPokemon.id}.png`;
@@ -491,7 +565,20 @@
 
     answerInput.value = "";
     feedback.textContent = "";
+    hint.textContent = "";
 
+    /*
+    새로운 문제이므로 상태를 초기화한다.
+    */
+    isCurrentQuestionSolved = false;
+    isAnswerRevealed = false;
+
+    progress.textContent =
+        `${currentQuizIndex + 1} / ${quizList.length}`;
+
+    scoreElement.textContent = score;
+
+    answerInput.disabled = false;
     answerInput.focus();
 }
 
@@ -499,65 +586,226 @@
          * 사용자가 입력한 정답을 확인합니다.
          */
         function checkPokemonAnswer() {
-            if (!currentPokemon) {
-                showCustomModal(
-                    "❌",
-                    "오류",
-                    "퀴즈를 불러오지 못했습니다."
-                );
+    if (!currentPokemon) {
+        showCustomModal(
+            "❌",
+            "오류",
+            "퀴즈를 불러오지 못했습니다."
+        );
 
-                return;
-            }
+        return;
+    }
 
-            const answerInput =
-                document.getElementById("quiz-answer-input");
+    const answerInput =
+        document.getElementById("quiz-answer-input");
 
-            const feedback =
-                document.getElementById("quiz-feedback");
+    const feedback =
+        document.getElementById("quiz-feedback");
 
-            const pokemonImage =
-                document.getElementById("pokemonImage");
+    const pokemonImage =
+        document.getElementById("pokemonImage");
 
-            const answer = answerInput.value
-                .trim()
-                .replace(/\s+/g, "");
+    const scoreElement =
+        document.getElementById("quiz-score");
 
-            if (answer === "") {
-                showCustomModal(
-                    "❌",
-                    "알림",
-                    "포켓몬 이름을 입력하세요."
-                );
+    const answer = answerInput.value
+        .trim()
+        .replace(/\s+/g, "");
 
-                answerInput.focus();
-                return;
-            }
+    if (answer === "") {
+        showCustomModal(
+            "❌",
+            "알림",
+            "포켓몬 이름을 입력하세요."
+        );
 
-            if (answer === currentPokemon.name) {
-                pokemonImage.classList.remove("silhouette");
-                pokemonImage.alt = currentPokemon.name;
+        answerInput.focus();
+        return;
+    }
 
-                feedback.innerHTML =
-                    "<span class='text-green-700'>🎉 정답!</span>";
+    /*
+    이미 정답을 맞힌 문제라면 점수를 다시 올리지 않는다.
+    */
+    if (isCurrentQuestionSolved) {
+        showCustomModal(
+            "✅",
+            "이미 맞힌 문제",
+            "다음 문제로 이동해 주세요!"
+        );
 
-                showCustomModal(
-                    "🎉",
-                    "정답!",
-                    `${currentPokemon.name}입니다!`
-                );
-            } else {
-                feedback.innerHTML =
-                    "<span class='text-red-600'>❌ 오답!</span>";
+        return;
+    }
 
-                showCustomModal(
-                    "❌",
-                    "틀렸습니다",
-                    "다시 한번 도전해 보세요!"
-                );
+    if (answer === currentPokemon.name) {
+        pokemonImage.classList.remove("silhouette");
+        pokemonImage.alt = currentPokemon.name;
 
-                answerInput.select();
-            }
+        isCurrentQuestionSolved = true;
+
+        /*
+        정답 보기 버튼을 누르지 않은 상태에서 직접 맞힌 경우만 점수를 준다.
+        */
+        if (!isAnswerRevealed) {
+            score += 1;
+            scoreElement.textContent = score;
         }
+
+        feedback.innerHTML =
+            `<span class="text-green-700">
+                🎉 정답! 현재 점수: ${score}점
+            </span>`;
+
+        answerInput.disabled = true;
+
+        showCustomModal(
+            "🎉",
+            "정답!",
+            `${currentPokemon.name}입니다! 현재 ${score}점입니다.`
+        );
+    } else {
+        feedback.innerHTML =
+            "<span class='text-red-600'>❌ 오답! 다시 도전해 보세요.</span>";
+
+        showCustomModal(
+            "❌",
+            "틀렸습니다",
+            "힌트를 보거나 다시 한번 입력해 보세요!"
+        );
+
+        answerInput.select();
+    }
+}
+
+        function showPokemonHint() {
+    if (!currentPokemon) {
+        return;
+    }
+
+    const hint =
+        document.getElementById("quiz-hint");
+
+    const name = currentPokemon.name;
+
+    let hintText = "";
+
+    if (name.length === 2) {
+        hintText = `${name[0]}○`;
+    } else if (name.length === 3) {
+        hintText = `${name[0]}○${name[2]}`;
+    } else {
+        hintText =
+            name[0] +
+            "○".repeat(name.length - 2) +
+            name[name.length - 1];
+    }
+
+    hint.textContent =
+        `💡 힌트: ${name.length}글자 / ${hintText}`;
+}
+
+function showPokemonAnswer() {
+    if (!currentPokemon) {
+        return;
+    }
+
+    const pokemonImage =
+        document.getElementById("pokemonImage");
+
+    const feedback =
+        document.getElementById("quiz-feedback");
+
+    const hint =
+        document.getElementById("quiz-hint");
+
+    const answerInput =
+        document.getElementById("quiz-answer-input");
+
+    /*
+    정답 보기를 사용한 문제는 점수를 받을 수 없다.
+    */
+    isAnswerRevealed = true;
+    isCurrentQuestionSolved = true;
+
+    pokemonImage.classList.remove("silhouette");
+    pokemonImage.alt = currentPokemon.name;
+
+    hint.textContent = "";
+
+    feedback.innerHTML =
+        `<span class="text-yellow-700">
+            🔍 정답은 ${currentPokemon.name}입니다.
+            정답을 확인했기 때문에 이 문제는 점수가 없습니다.
+        </span>`;
+
+    answerInput.value = currentPokemon.name;
+    answerInput.disabled = true;
+
+    showCustomModal(
+        "🔍",
+        "정답 공개",
+        `정답은 ${currentPokemon.name}입니다! 이 문제는 점수에 포함되지 않습니다.`
+    );
+}
+function goToNextQuiz() {
+    /*
+    아직 정답도 맞히지 않았고 정답도 확인하지 않은 상태라면
+    바로 넘어갈지 안내한다.
+    */
+    if (!isCurrentQuestionSolved) {
+        showCustomModal(
+            "⚠️",
+            "아직 문제를 풀지 않았습니다",
+            "정답을 맞히거나 정답 보기를 사용한 뒤 다음 문제로 이동해 주세요."
+        );
+
+        return;
+    }
+
+    currentQuizIndex += 1;
+    loadQuiz();
+}
+function finishQuiz() {
+    const pokemonImage =
+        document.getElementById("pokemonImage");
+
+    const answerInput =
+        document.getElementById("quiz-answer-input");
+
+    const feedback =
+        document.getElementById("quiz-feedback");
+
+    const hint =
+        document.getElementById("quiz-hint");
+
+    const progress =
+        document.getElementById("quiz-progress");
+
+    pokemonImage.classList.remove("silhouette");
+    pokemonImage.src =
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png";
+
+    pokemonImage.alt = "퀴즈 완료";
+
+    answerInput.value = "";
+    answerInput.disabled = true;
+
+    hint.textContent = "";
+
+    progress.textContent =
+        `${quizList.length} / ${quizList.length}`;
+
+    feedback.innerHTML =
+        `<span class="text-purple-700">
+            🏆 퀴즈 완료! 최종 점수는
+            ${quizList.length}점 만점에 ${score}점입니다.
+        </span>`;
+
+    showCustomModal(
+        "🏆",
+        "퀴즈 완료!",
+        `${quizList.length}문제 중 ${score}문제를 맞혔습니다!`
+    );
+}
 
         /**
          * 결과 모달을 표시합니다.
@@ -606,6 +854,13 @@
             const checkButton =
                 document.getElementById("check-answer-button");
 
+const hintButton =
+    document.getElementById("hint-button");
+    const restartButton =
+    document.getElementById("restart-quiz-button");
+
+const showAnswerButton =
+    document.getElementById("show-answer-button");
             const nextButton =
                 document.getElementById("next-quiz-button");
 
@@ -619,11 +874,24 @@
                 "click",
                 checkPokemonAnswer
             );
+            restartButton.addEventListener(
+    "click",
+    restartQuiz
+);
 
-            nextButton.addEventListener(
-                "click",
-                loadQuiz
-            );
+           nextButton.addEventListener(
+    "click",
+    goToNextQuiz
+);
+            hintButton.addEventListener(
+    "click",
+    showPokemonHint
+);
+
+showAnswerButton.addEventListener(
+    "click",
+    showPokemonAnswer
+);
 
             closeModalButton.addEventListener(
                 "click",

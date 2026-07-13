@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Space - 포켓몬</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body class="min-h-screen flex flex-col justify-between pokemon-body-theme">
+
+    <!-- Top Navigation -->
+    <header class="bg-white border-b-4 border-black sticky top-0 z-50 px-4 py-3 text-black">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 text-xl font-black tracking-wider text-black pixel-font">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                <span class="text-sm">MY FAVORITES</span>
+            </a>
+            <nav class="hidden md:flex space-x-2">
+                <a href="pokemon.html" class="px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-slate-100 transition-all text-emerald-600 hover:text-emerald-500">포켓몬</a>
+                <a href="lego.html" class="px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-slate-100 transition-all text-amber-600 hover:text-amber-500">레고</a>
+                <a href="soccer.html" class="px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-slate-100 transition-all text-rose-600 hover:text-rose-500">축구</a>
+            </nav>
+            <div class="md:hidden text-xs text-slate-500 font-mono">가로 버튼 탐색</div>
+        </div>
+    </header>
+
+    <!-- Top Forest Deco Border -->
+    <div class="forest-border-frame w-full z-40"></div>
+
+    <main class="flex-grow flex items-center justify-center py-8 px-4 z-10">
+        <section class="page-fade w-full max-w-4xl p-2 relative">
+
+            <a href="index.html" class="absolute -top-12 right-2 bg-white hover:bg-slate-200 text-black border-4 border-black px-4 py-1.5 font-bold rounded-lg shadow-[4px_4px_0px_#000] active:translate-y-1 active:shadow-none transition-all flex items-center gap-1.5 z-20">
+                <i data-lucide="home" class="w-4 h-4"></i> HOME
+            </a>
+
+            <div class="text-center mb-10 mt-6">
+                <div class="inline-block pixel-box px-8 py-4">
+                    <h2 class="text-xl md:text-2xl font-bold pixel-font flex items-center justify-center gap-3">
+                         이상해씨 알아보기 
+                    </h2>
+                </div>
+            </div>
+
+            <div class="space-y-10">
+
+                <!-- 1. 이상해씨 (No.001) -->
+                <div class="pixel-box p-6 bg-teal-50/95 hover:-translate-y-1.5 transition-transform duration-300">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-5 flex justify-center">
+                            <div class="w-full max-w-[260px] aspect-square bg-teal-100/80 border-4 border-black rounded-xl p-4 flex items-center justify-center relative shadow-[4px_4px_0px_#000]">
+                                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="이상해씨" class="w-44 h-44 object-contain filter drop-shadow-md">
+                                <span class="absolute top-2 left-2 pixel-box bg-yellow-300 text-xs px-2.5 py-0.5 font-bold">No.001</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-7 space-y-4">
+                            <div class="border-b-4 border-black pb-2">
+                                <h3 class="text-2xl font-black pixel-font">이상해씨</h3>
+                                <p class="text-slate-600 text-sm font-bold mt-1">풀 / 독 타입 포켓몬</p>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-xs font-semibold">
+                                <div class="pixel-font text-[11px]"><strong>[ENG]</strong> Bulbasaur</div>
+                                <div class="pixel-font text-[11px]"><strong>[JPN]</strong> フシギダネ</div>
+                                <div class="pixel-font text-[11px]"><strong>[HEIGHT]</strong> 0.7 m</div>
+                                <div class="pixel-font text-[11px]"><strong>[WEIGHT]</strong> 6.9 kg</div>
+                            </div>
+                            <div class="border-2 border-black p-3 bg-white/70">
+                                <p class="pixel-font text-[10px] text-slate-800">
+                                    태어날 때부터 등 뒤에 식물의 씨앗이 있어 조금씩 자랍니다. 햇볕 아래에서 낮잠 자기를 좋아합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 이상해풀 (No.002) -->
+                <div class="pixel-box p-6 bg-emerald-50/95 hover:-translate-y-1.5 transition-transform duration-300">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-5 flex justify-center">
+                            <div class="w-full max-w-[260px] aspect-square bg-emerald-100/80 border-4 border-black rounded-xl p-4 flex items-center justify-center relative shadow-[4px_4px_0px_#000]">
+                                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png" alt="이상해풀" class="w-44 h-44 object-contain filter drop-shadow-md">
+                                <span class="absolute top-2 left-2 pixel-box bg-yellow-300 text-xs px-2.5 py-0.5 font-bold">No.002</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-7 space-y-4">
+                            <div class="border-b-4 border-black pb-2">
+                                <h3 class="text-2xl font-black pixel-font">이상해풀</h3>
+                                <p class="text-slate-600 text-sm font-bold mt-1">풀 / 독 타입 포켓몬</p>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-xs font-semibold">
+                                <div class="pixel-font text-[11px]"><strong>[ENG]</strong> Ivysaur</div>
+                                <div class="pixel-font text-[11px]"><strong>[JPN]</strong> フシギソウ</div>
+                                <div class="pixel-font text-[11px]"><strong>[HEIGHT]</strong> 1.0 m</div>
+                                <div class="pixel-font text-[11px]"><strong>[WEIGHT]</strong> 13.0 kg</div>
+                            </div>
+                            <div class="border-2 border-black p-3 bg-white/70">
+                                <p class="pixel-font text-[10px] text-slate-800">
+                                    등 뒤의 봉오리가 자라면 뒤쪽 다리의 힘이 강해집니다. 꽃이 필 때가 되면 달콤한 향기를 풍깁니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 이상해꽃 (No.003) -->
+                <div class="pixel-box p-6 bg-green-50/95 hover:-translate-y-1.5 transition-transform duration-300">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-5 flex justify-center">
+                            <div class="w-full max-w-[260px] aspect-square bg-green-100/80 border-4 border-black rounded-xl p-4 flex items-center justify-center relative shadow-[4px_4px_0px_#000]">
+                                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png" alt="이상해꽃" class="w-44 h-44 object-contain filter drop-shadow-md">
+                                <span class="absolute top-2 left-2 pixel-box bg-yellow-300 text-xs px-2.5 py-0.5 font-bold">No.003</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-7 space-y-4">
+                            <div class="border-b-4 border-black pb-2">
+                                <h3 class="text-2xl font-black pixel-font">이상해꽃</h3>
+                                <p class="text-slate-600 text-sm font-bold mt-1">풀 / 독 타입 포켓몬</p>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-xs font-semibold">
+                                <div class="pixel-font text-[11px]"><strong>[ENG]</strong> Venusaur</div>
+                                <div class="pixel-font text-[11px]"><strong>[JPN]</strong> フシギバナ</div>
+                                <div class="pixel-font text-[11px]"><strong>[HEIGHT]</strong> 2.0 m</div>
+                                <div class="pixel-font text-[11px]"><strong>[WEIGHT]</strong> 100.0 kg</div>
+                            </div>
+                            <div class="border-2 border-black p-3 bg-white/70">
+                                <p class="pixel-font text-[10px] text-slate-800">
+                                    비 온 뒤 피어나는 흙냄새를 아주 좋아합니다. 등 위의 커다란 꽃에서 방출되는 향기는 마음을 치유해 줍니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Bulbasaur Goods Section -->
+                <div class="pixel-box p-6 bg-slate-50/90 max-w-4xl mx-auto">
+                    <h3 class="text-sm font-bold pixel-font text-center border-b-4 border-black pb-3 mb-6">
+                         우리집 이상해씨 굿즈 
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="relative bg-teal-950 border-4 border-black p-4 rounded-xl flex items-center justify-center min-h-[220px] shadow-[4px_4px_0px_#000]">
+                            <div class="absolute inset-0 bg-emerald-950 opacity-40"></div>
+                            <div class="z-10 text-center hover-float">
+                                <span class="block text-4xl mb-3">🦖🧸🪴</span>
+                                <div class="pixel-box bg-white text-[10px] p-2 inline-block">
+                                    [우리집 이상해씨 굿즈 실제 누끼 사진 업로드 예정 공간]
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="font-bold pixel-font text-xs text-emerald-800">🪴 나의 수집 기록</h4>
+                            <p class="pixel-font text-[10px] text-slate-600 leading-relaxed">
+                                책상 위에 있는 피규어와 인형 컬렉션 구역입니다. 내일 직접 촬영해서 배경 투명화(누끼) 작업을 거친 실제 이미지 파일로 이곳을 대체할 예정입니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Professor Oak Quiz -->
+                <div class="pixel-box p-6 bg-yellow-50/95 border-double border-8 border-black max-w-2xl mx-auto shadow-2xl">
+                    <h3 class="text-sm font-bold pixel-font text-center text-slate-900 mb-6 flex items-center justify-center gap-2">
+                        <span>👴</span> 오박사의 실루엣 퀴즈!
+                    </h3>
+
+                    <div class="flex flex-col items-center space-y-6">
+                        <div class="relative w-48 h-48 bg-slate-900 border-4 border-black rounded-xl flex items-center justify-center overflow-hidden">
+                            <div id="quiz-silhouette-container" class="w-36 h-36 flex items-center justify-center">
+                                <svg id="pokemon-silhouette" class="w-full h-full silhouette" viewBox="0 0 100 100">
+                                    <ellipse cx="50" cy="55" rx="30" ry="22" fill="#79c8c5" stroke="#000" stroke-width="4"/>
+                                    <path d="M30 45 C20 25, 45 15, 55 35 C65 15, 80 25, 70 45 Z" fill="#82c235" stroke="#000" stroke-width="4"/>
+                                    <ellipse class="quiz-eye-details hidden" cx="40" cy="50" rx="6" ry="8" fill="#fff" stroke="#000" stroke-width="2"/>
+                                    <circle class="quiz-eye-details hidden" cx="40" cy="50" r="3" fill="#ff4d4d"/>
+                                    <ellipse class="quiz-eye-details hidden" cx="60" cy="50" rx="6" ry="8" fill="#fff" stroke="#000" stroke-width="2"/>
+                                    <circle class="quiz-eye-details hidden" cx="60" cy="50" r="3" fill="#ff4d4d"/>
+                                    <path class="quiz-eye-details hidden" d="M45 62 L48 65 L52 65 L55 62" fill="none" stroke="#000" stroke-width="3"/>
+                                </svg>
+                            </div>
+                            <div class="absolute bottom-2 left-2 pixel-box bg-amber-400 text-[8px] px-2 py-0.5">WHO'S THAT?</div>
+                        </div>
+
+                        <div id="quiz-control" class="w-full text-center space-y-4">
+                            <p class="pixel-font text-[9px] text-slate-700">이 포켓몬의 이름은 무엇일까요?</p>
+                            <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                                <input type="text" id="quiz-answer-input" placeholder="한글 정답" class="pixel-font text-xs border-4 border-black p-2 rounded focus:outline-none w-48 text-center uppercase">
+                                <button onclick="checkPokemonAnswer()" class="pixel-font text-xs bg-red-600 hover:bg-red-700 text-white border-4 border-black px-4 py-2 rounded shadow-md active:translate-y-1 active:shadow-none transition-all">
+                                    결정!
+                                </button>
+                            </div>
+                            <div id="quiz-feedback" class="pixel-font text-[10px] font-bold mt-2 h-6 text-slate-800">
+                                (힌트: 3단 진화의 첫 단계 친구입니다!)
+                            </div>
+                            <button onclick="resetPokemonQuiz()" class="text-[8px] pixel-font text-slate-500 underline mt-2 block mx-auto">문제 다시 풀기</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Forest Deco Border -->
+    <div class="forest-border-frame w-full rotate-180 z-40"></div>
+
+    <footer class="bg-white border-t-4 border-black py-6 text-center text-xs text-black font-mono">
+        <p>© 2026 Hobby Space. Powered by Pure Vanilla JS &amp; Tailwind CSS.</p>
+    </footer>
+
+    <!-- Custom Dialog / Message Box -->
+    <div id="custom-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-[100] transition-opacity duration-300">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl relative">
+            <span id="modal-icon" class="text-5xl block mb-4">📢</span>
+            <h4 id="modal-title" class="text-xl font-bold text-white mb-2">알림</h4>
+            <p id="modal-text" class="text-slate-300 text-sm mb-6 leading-relaxed">알림 내용이 들어갑니다.</p>
+            <button onclick="closeCustomModal()" class="w-full py-3 bg-gradient-to-r from-teal-500 to-sky-500 hover:from-teal-400 hover:to-sky-400 text-slate-950 font-bold rounded-xl active:scale-95 transition-all">
+                확인
+            </button>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+        // --- POKEMON GAME LOGIC (Professor Oak Quiz) ---
+        function checkPokemonAnswer() {
+            const inputVal = document.getElementById('quiz-answer-input').value.trim();
+            const silhouette = document.getElementById('pokemon-silhouette');
+            const feedback = document.getElementById('quiz-feedback');
+            const eyes = document.querySelectorAll('.quiz-eye-details');
+
+            if (!inputVal) {
+                showCustomModal('❌', '답이 비어있어요!', '포켓몬의 한글 이름을 적어주세요!');
+                return;
+            }
+
+            if (inputVal === '이상해씨') {
+                silhouette.classList.add('revealed');
+                eyes.forEach(eye => eye.classList.remove('hidden'));
+                feedback.innerHTML = `<span class="text-emerald-700 font-extrabold">🎉 정답입니다! 이상해씨를 맞춰내셨군요!</span>`;
+                showCustomModal('🌿', '정답입니다!', '대단해요! 이상해씨가 아주 기뻐하고 있습니다! 등 뒤의 씨앗이 조금 자란 것 같아요.');
+            } else {
+                feedback.innerHTML = `<span class="text-rose-700 font-extrabold">❌ 틀렸습니다! 다시 생각해봐요!</span>`;
+                showCustomModal('⚠️', '오답입니다...', '다시 한 번 도감을 훑어보고 정답을 작성해 보세요!');
+            }
+        }
+
+        function resetPokemonQuiz() {
+            const input = document.getElementById('quiz-answer-input');
+            const silhouette = document.getElementById('pokemon-silhouette');
+            const feedback = document.getElementById('quiz-feedback');
+            const eyes = document.querySelectorAll('.quiz-eye-details');
+
+            input.value = '';
+            silhouette.classList.remove('revealed');
+            eyes.forEach(eye => eye.classList.add('hidden'));
+            feedback.innerHTML = '(힌트: 3단 진화의 첫 단계 친구입니다!)';
+        }
+    </script>
+</body>
+</html>

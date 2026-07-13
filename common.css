@@ -1,0 +1,124 @@
+/* Base Config & Transitions */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    overflow-x: hidden;
+    background-color: #f8fafc;
+    color: #0f172a;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.page-fade {
+    animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= 1. POKEMON THEME ================= */
+.pixel-font {
+    font-family: 'Press Start 2P', monospace;
+    line-height: 1.6;
+}
+
+.pokemon-body-theme {
+    background-color: #79cc99 !important;
+    background-image:
+        radial-gradient(#4da875 18%, transparent 19%),
+        radial-gradient(#a3ebd0 12%, transparent 13%);
+    background-size: 36px 36px;
+    background-position: 0 0, 18px 18px;
+    color: #000000 !important;
+}
+
+.forest-border-frame {
+    background: repeating-linear-gradient(90deg, #184024, #184024 15px, #2b613a 15px, #2b613a 30px);
+    height: 16px;
+    border-bottom: 4px solid #000;
+}
+
+.pixel-box {
+    border: 4px solid #000;
+    background: #fff;
+    color: #000;
+    box-shadow: 6px 6px 0px #000;
+}
+
+.silhouette {
+    filter: brightness(0) invert(0);
+    transition: filter 0.5s ease-in-out;
+}
+
+.silhouette.revealed {
+    filter: none;
+}
+
+/* ================= 2. LEGO THEME ================= */
+.lego-body-theme {
+    background-color: #d97706 !important;
+    background-image: radial-gradient(#b45309 30%, transparent 31%);
+    background-size: 40px 40px;
+    background-position: 20px 20px;
+    color: #ffffff !important;
+}
+
+.lego-stud {
+    position: relative;
+}
+.lego-stud::after {
+    content: '';
+    position: absolute;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 2px 2px rgba(255,255,255,0.4);
+}
+
+.lego-card-red {
+    background-color: #dc2626;
+    border: 4px solid #991b1b;
+    box-shadow: 8px 8px 0px #7f1d1d;
+}
+.lego-card-blue {
+    background-color: #2563eb;
+    border: 4px solid #1e40af;
+    box-shadow: 8px 8px 0px #1e3a8a;
+}
+.lego-card-yellow {
+    background-color: #eab308;
+    border: 4px solid #ca8a04;
+    box-shadow: 8px 8px 0px #854d0e;
+    color: #1e293b;
+}
+
+/* ================= 3. SOCCER THEME ================= */
+.soccer-body-theme {
+    background: linear-gradient(to bottom, #15803d 50%, #166534 50%) !important;
+    background-size: 100% 100px;
+    color: #ffffff !important;
+    position: relative;
+}
+
+.soccer-body-theme::before {
+    content: '';
+    position: absolute;
+    inset: 15px;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    border-radius: 12px;
+}
+
+@keyframes hoverFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+.hover-float {
+    animation: hoverFloat 3s ease-in-out infinite;
+}
+
+.stadium-lights {
+    background: radial-gradient(circle at top, rgba(255,255,255,0.2) 0%, transparent 60%);
+}

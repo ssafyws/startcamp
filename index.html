@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Space - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-slate-50 text-slate-800">
+
+    <!-- Top Navigation -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-50 px-4 py-3">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 text-xl font-bold tracking-wider text-teal-600 hover:text-teal-500 transition-colors">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                <span>MY FAVORITES</span>
+            </a>
+            <nav class="hidden md:flex space-x-2">
+                <a href="pokemon.html" class="px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-slate-100 transition-all text-emerald-600 hover:text-emerald-500">포켓몬</a>
+                <a href="lego.html" class="px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-slate-100 transition-all text-amber-600 hover:text-amber-500">레고</a>
+                <a href="soccer.html" class="px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-slate-100 transition-all text-rose-600 hover:text-rose-500">축구</a>
+            </nav>
+            <div class="md:hidden text-xs text-slate-500 font-mono">가로 버튼 탐색</div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center py-8 px-4 z-10">
+        <section class="page-fade w-full max-w-4xl">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-black mb-2 bg-gradient-to-r from-teal-600 via-emerald-600 to-sky-600 bg-clip-text text-transparent">
+                    안녕하세요!
+                </h1>
+                <p class="text-slate-500 font-medium">제가 좋아하는 것들을 소개합니다.</p>
+            </div>
+
+            <!-- Profile Card -->
+            <div class="bg-white/90 border border-slate-200/60 rounded-3xl p-6 md:p-10 shadow-xl shadow-slate-100 mb-12 max-w-2xl mx-auto hover:border-teal-400/50 hover:shadow-2xl hover:shadow-teal-100/50 transition-all duration-300">
+                <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-tr from-teal-400 to-sky-400 p-1 shadow-md hover:scale-105 transition-transform duration-300">
+                        <div class="w-full h-full rounded-full bg-slate-50 flex items-center justify-center overflow-hidden">
+                            <svg class="w-24 h-24 text-slate-400" viewBox="0 0 100 100" fill="currentColor">
+                                <circle cx="50" cy="40" r="22" fill="#0284c7"/>
+                                <path d="M50 18 C 55 18, 62 25, 59 34 C 57 40, 43 40, 41 34 C 38 25, 45 18, 50 18 Z" fill="#e2e8f0"/>
+                                <path d="M22 82 C22 65, 35 58, 50 58 C65 58, 78 65, 78 82" fill="#38bdf8" />
+                                <rect x="42" y="55" width="16" height="12" fill="#0284c7" rx="2" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="text-center md:text-left space-y-3">
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 text-teal-600 text-xs font-bold border border-teal-100">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> 대한민국 서울 거주
+                        </div>
+                        <h2 class="text-3xl font-bold text-slate-800">김우식</h2>
+                        <p class="text-slate-600 text-sm md:text-base leading-relaxed font-medium">
+                            좋아하는 것들을 모으고 관찰할 때 큰 행복을 느낍니다.<br class="hidden md:inline">
+                            포켓몬, 레고, 그리고 가슴을 뛰게 하는 축구 이야기를 구경해보세요.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                <a href="pokemon.html" class="group relative overflow-hidden bg-gradient-to-br from-emerald-500 to-teal-700 p-6 rounded-2xl border border-emerald-400/20 text-left transition-all duration-300 hover:scale-[1.03] hover:shadow-emerald-200 hover:shadow-2xl block">
+                    <div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="leaf" class="w-28 h-28 text-white"></i>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="p-3 bg-emerald-400/20 text-emerald-100 rounded-xl group-hover:scale-110 transition-transform"><i data-lucide="leaf" class="w-6 h-6"></i></span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-emerald-300 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">포켓몬스터</h3>
+                    <p class="text-emerald-100/80 text-xs">이상해씨 알아보기</p>
+                </a>
+
+                <a href="lego.html" class="group relative overflow-hidden bg-gradient-to-br from-yellow-500 to-amber-700 p-6 rounded-2xl border border-yellow-400/20 text-left transition-all duration-300 hover:scale-[1.03] hover:shadow-yellow-200 hover:shadow-2xl block">
+                    <div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="toy-brick" class="w-28 h-28 text-white"></i>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="p-3 bg-yellow-400/20 text-yellow-100 rounded-xl group-hover:scale-110 transition-transform"><i data-lucide="smile" class="w-6 h-6"></i></span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-yellow-300 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">레고 (LEGO)</h3>
+                    <p class="text-yellow-100/80 text-xs">내가 조립한 레고</p>
+                </a>
+
+                <a href="soccer.html" class="group relative overflow-hidden bg-gradient-to-br from-rose-500 to-red-700 p-6 rounded-2xl border border-rose-400/20 text-left transition-all duration-300 hover:scale-[1.03] hover:shadow-red-200 hover:shadow-2xl block">
+                    <div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="trophy" class="w-28 h-28 text-white"></i>
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="p-3 bg-red-400/20 text-red-100 rounded-xl group-hover:scale-110 transition-transform"><i data-lucide="award" class="w-6 h-6"></i></span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-red-300 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">축구 (Football)</h3>
+                    <p class="text-red-100/80 text-xs">내가 좋아하는 팀들</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 border-t border-slate-900 py-6 text-center text-xs text-slate-500 font-mono">
+        <p>© 2026 Hobby Space. Powered by Pure Vanilla JS &amp; Tailwind CSS.</p>
+    </footer>
+
+    <script src="common.js"></script>
+</body>
+</html>
